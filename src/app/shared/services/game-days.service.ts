@@ -11,7 +11,9 @@ export class GameDaysService {
   private gameDaysSrc = new BehaviorSubject<GameDay[]>([]);
   gameDays$ = this.gameDaysSrc.asObservable();
 
-  constructor(private teamsService: TeamsService) {}
+  constructor(private teamsService: TeamsService) {
+    this.teamsService.teams$.subscribe(() => this.gameDaysSrc.next([]));
+  }
 
   generateGameDays() {
     this.teamsService.teams$.pipe(take(1)).subscribe((teams) => {

@@ -1,6 +1,13 @@
+:host{
+  max-height: calc(100% - 4rem);
+}
 mat-drawer-container {
   height: 100%;
   mat-drawer {
     width: 300px;
+  }
+  mat-drawer-content {
+    max-height: 100%;
+    overflow: auto;
   }
 }
