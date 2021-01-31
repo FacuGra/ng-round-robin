@@ -1,0 +1,24 @@
+<div>
+  <h2>Partidos</h2>
+  <button
+    mat-raised-button
+    type="submit"
+    [disabled]="!(canGenerate | async)"
+    (click)="generateGameDays()"
+  >
+    Generar
+  </button>
+</div>
+<ng-container *ngFor="let gameDay of gameDays | async">
+  <h3>
+    <strong> Fecha {{ gameDay.dateNumber }}</strong> -
+    {{ gameDay.date.toDateString() }}
+  </h3>
+  <div>
+    <ng-container *ngFor="let match of gameDay.matches; index as i">
+      <app-team-button [team]="match.home"></app-team-button>
+      <span class="mat-mini-fab mat-accent">VS</span>
+      <app-team-button [team]="match.away"></app-team-button>
+    </ng-container>
+  </div>
+</ng-container>

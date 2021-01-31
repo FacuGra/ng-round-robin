@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+div {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+  }
+}
+app-team-button {
+  margin-top: 1rem;
+}

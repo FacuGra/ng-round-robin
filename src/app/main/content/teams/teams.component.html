@@ -1,0 +1,15 @@
+<div>
+  <h2>Teams</h2>
+  <button
+    mat-mini-fab
+    color="accent"
+    (click)="deleteSelected()"
+    [disabled]="(selected | async) === null"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+<app-team-button
+  *ngFor="let team of teams | async"
+  [team]="team"
+></app-team-button>

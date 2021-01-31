@@ -1,0 +1,11 @@
+<button
+  mat-button
+  mat-stroked-button
+  class="text-ellipsis mat-primary"
+  [ngClass]="{
+    'mat-raised-button': (selected | async) === team.id
+  }"
+  (click)="setSelected(team.id)"
+>
+  {{ team.name }}
+</button>

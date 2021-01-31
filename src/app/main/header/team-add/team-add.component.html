@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-form-field>
+    <mat-label>Equipo</mat-label>
+    <input formControlName="team" matInput placeholder="Ej. Peñarol" />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    type="submit"
+    [disabled]="!(canAdd | async) || form.invalid"
+  >
+    Agregar
+  </button>
+</form>
