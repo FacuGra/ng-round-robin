@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { GameDay } from 'src/app/shared/models/game-day';
 import { GameDaysService } from 'src/app/shared/services/game-days.service';
 import { TeamsService } from 'src/app/shared/services/teams.service';
@@ -22,10 +22,14 @@ export class MatchesComponent implements OnInit {
   ngOnInit(): void {
     this.gameDays = this.gameDaysService.gameDays$;
     this.canGenerate = this.teamsService.teams$.pipe(
-      map((teams) => {
-        let { length } = teams;
-        return !(length % 2) && length >= 4 && length <= 20;
-      })
+      mergeMap((teams) =>
+        this.gameDays.pipe(
+          map((gameDays) => {
+            let { length } = teams;
+            return !(length % 2) && length >= 4 && length <= 20 && !gameDays.length;
+          })
+        )
+      )
     );
   }
 
