@@ -12,6 +12,7 @@ div {
   display: grid;
   grid-template-columns: repeat(2, calc(25% - 2.5rem) 5rem calc(25% - 2.5rem));
   align-items: center;
+  row-gap: 1rem;
 }
 h3 {
   margin: 1rem;
@@ -26,5 +27,5 @@ img {
 span {
   line-height: 2.6rem;
   justify-self: center;
+  cursor: inherit;
 }
-
