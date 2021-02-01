@@ -1,13 +1,41 @@
-:host{
+:host {
   max-height: calc(100% - 4rem);
 }
+
 mat-drawer-container {
   height: 100%;
+
   mat-drawer {
     width: 300px;
   }
+
   mat-drawer-content {
     max-height: 100%;
     overflow: auto;
+  }
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: fit-content;
+}
+
+button.mat-icon-button {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  mat-toolbar {
+    flex-direction: column;
+
+    h1 {
+      margin-top: 1rem;
+    }
+  }
+
+  button.mat-icon-button {
+    display: initial;
   }
 }
