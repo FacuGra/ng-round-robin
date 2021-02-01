@@ -8,14 +8,14 @@ describe('TeamButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeamButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [TeamButtonComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TeamButtonComponent);
     component = fixture.componentInstance;
+    component.team = { id: 1, name: 'Team1' };
     fixture.detectChanges();
   });
 

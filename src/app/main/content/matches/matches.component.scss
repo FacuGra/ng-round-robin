@@ -8,23 +8,35 @@ div:first-child {
     margin: 1rem;
   }
 }
+
 div {
   display: grid;
   grid-template-columns: repeat(2, calc(25% - 2.5rem) 5rem calc(25% - 2.5rem));
   align-items: center;
+  row-gap: 1rem;
 }
+
+@media only screen and (max-width: 600px) {
+  div {
+    grid-template-columns: calc(50% - 2.5rem) 5rem calc(50% - 2.5rem);
+  }
+}
+
 h3 {
   margin: 1rem;
+
   &:first-of-type {
     margin-top: 0;
   }
 }
+
 img {
   height: 5rem;
   width: 5rem;
 }
+
 span {
   line-height: 2.6rem;
   justify-self: center;
+  cursor: inherit;
 }
-

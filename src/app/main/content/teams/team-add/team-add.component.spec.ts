@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { TeamAddComponent } from './team-add.component';
 
@@ -8,9 +9,9 @@ describe('TeamAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeamAddComponent ]
-    })
-    .compileComponents();
+      declarations: [TeamAddComponent],
+      providers: [FormBuilder],
+    }).compileComponents();
   });
 
   beforeEach(() => {

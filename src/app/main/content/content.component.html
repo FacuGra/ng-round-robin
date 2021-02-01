@@ -1,5 +1,14 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened position="end">
+<mat-toolbar color="primary">
+  <h1>
+    Generador de grupos
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </h1>
+  <app-team-add></app-team-add>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" opened position="end">
     <app-teams></app-teams>
   </mat-drawer>
   <mat-drawer-content>
