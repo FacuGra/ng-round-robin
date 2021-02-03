@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { GameDay } from 'src/app/shared/models/game-day';
@@ -9,6 +9,7 @@ import { TeamsService } from 'src/app/shared/services/teams.service';
   selector: 'app-matches',
   templateUrl: './matches.component.html',
   styleUrls: ['./matches.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MatchesComponent implements OnInit {
   canGenerate: Observable<boolean>;
@@ -25,15 +26,17 @@ export class MatchesComponent implements OnInit {
       mergeMap((teams) =>
         this.gameDays.pipe(
           map((gameDays) => {
-            let { length } = teams;
-            return !(length % 2) && length >= 4 && length <= 20 && !gameDays.length;
+            const { length } = teams;
+            return (
+              !(length % 2) && length >= 4 && length <= 20 && !gameDays.length
+            );
           })
         )
       )
     );
   }
 
-  generateGameDays() {
+  generateGameDays(): void {
     this.gameDaysService.generateGameDays();
   }
 }

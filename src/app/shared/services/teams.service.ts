@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Team } from '../models/team';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TeamsService {
+  teams$: Observable<Team[]>;
+  selected$: Observable<number>;
   private teamsSrc = new BehaviorSubject<Team[]>([]);
-  teams$ = this.teamsSrc.asObservable();
   private selectedSrc = new BehaviorSubject<number>(null);
-  selected$ = this.selectedSrc.asObservable();
 
-  constructor() {}
+  constructor() {
+    this.teams$ = this.teamsSrc.asObservable();
+    this.selected$ = this.selectedSrc.asObservable();
+  }
 
   addTeam(name: string): void {
     const newTeams = this.teamsSrc.value;
@@ -20,7 +23,7 @@ export class TeamsService {
     this.teamsSrc.next(newTeams);
   }
 
-  setSelected(index: number) {
+  setSelected(index: number): void {
     if (this.selectedSrc.value === index) {
       this.selectedSrc.next(null);
     } else {
@@ -28,7 +31,7 @@ export class TeamsService {
     }
   }
 
-  deleteSelected() {
+  deleteSelected(): void {
     const newTeams = this.teamsSrc.value;
     newTeams.splice(this.selectedSrc.value - 1);
     this.selectedSrc.next(null);

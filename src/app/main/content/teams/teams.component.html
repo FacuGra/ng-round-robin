@@ -1,12 +1,12 @@
 <div>
-  <h2>Teams</h2>
+  <h2 i18n>Teams</h2>
   <button
     mat-mini-fab
     color="accent"
     (click)="deleteSelected()"
     [disabled]="(selected | async) === null"
   >
-    <mat-icon>delete</mat-icon>
+    <mat-icon i18n>delete</mat-icon>
   </button>
 </div>
 <app-team-button

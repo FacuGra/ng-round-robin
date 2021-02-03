@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { GameDay } from '../models/game-day';
 import { TeamsService } from './teams.service';
@@ -8,14 +8,15 @@ import { TeamsService } from './teams.service';
   providedIn: 'root',
 })
 export class GameDaysService {
+  gameDays$: Observable<GameDay[]>;
   private gameDaysSrc = new BehaviorSubject<GameDay[]>([]);
-  gameDays$ = this.gameDaysSrc.asObservable();
 
   constructor(private teamsService: TeamsService) {
+    this.gameDays$ = this.gameDaysSrc.asObservable();
     this.teamsService.teams$.subscribe(() => this.gameDaysSrc.next([]));
   }
 
-  generateGameDays() {
+  generateGameDays(): void {
     this.teamsService.teams$.pipe(take(1)).subscribe((teams) => {
       const teamCount = teams.length;
       const rounds = teamCount - 1;
@@ -52,8 +53,8 @@ export class GameDaysService {
     });
   }
 
-  getNextSunday(date: Date) {
-    var resultDate = new Date(date.getTime());
+  getNextSunday(date: Date): Date {
+    const resultDate = new Date(date.getTime());
     resultDate.setDate(date.getDate() + (date.getDay() % 7) + 7);
 
     return resultDate;

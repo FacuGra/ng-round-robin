@@ -1,14 +1,14 @@
 <mat-toolbar color="primary">
-  <h1>
+  <h1 i18n>
     Generador de grupos
     <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon i18n>menu</mat-icon>
     </button>
   </h1>
   <app-team-add></app-team-add>
 </mat-toolbar>
 <mat-drawer-container>
-  <mat-drawer #drawer mode="side" opened position="end">
+  <mat-drawer i18n-position i18n-mode #drawer mode="side" opened position="end">
     <app-teams></app-teams>
   </mat-drawer>
   <mat-drawer-content>

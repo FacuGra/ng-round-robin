@@ -1,18 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { TeamsService } from 'src/app/shared/services/teams.service';
-import { map } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { TeamsService } from 'src/app/shared/services/teams.service';
 
 @Component({
   selector: 'app-team-add',
   templateUrl: './team-add.component.html',
   styleUrls: ['./team-add.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamAddComponent implements OnInit {
   form: FormGroup;

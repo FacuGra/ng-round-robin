@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Team } from 'src/app/shared/models/team';
 import { TeamsService } from 'src/app/shared/services/teams.service';
@@ -7,6 +7,7 @@ import { TeamsService } from 'src/app/shared/services/teams.service';
   selector: 'app-teams',
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamsComponent implements OnInit {
   teams: Observable<Team[]>;
@@ -18,7 +19,7 @@ export class TeamsComponent implements OnInit {
     this.selected = this.teamsService.selected$;
   }
 
-  deleteSelected() {
+  deleteSelected(): void {
     this.teamsService.deleteSelected();
   }
 }
